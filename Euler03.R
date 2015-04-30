@@ -1,18 +1,23 @@
 # Calculate largest prime factor of 600851475143 
 # Go through factors largest to smallest, check primeness
-x <- 600851475143
-num <- floor(sqrt(x))
-found <- 0
+num <- 600851475143
 
-while(num > 1 && found==0)
-  if((x %% num)%%1==0){
-    # Check if prime
-    num2 <- num - 1
-    found2 <- 0
-    while(num2 > 1 and found2==0){
-      
-    }
-  }else{
-    num <- num - 1
+factorize <- function(x){
+  curr_max <- 1
+  
+  while(x %% 2 == 0){
+    curr_max <- 2
+    x <- x / 2
   }
+  
+  for(i in 3:max(3,floor(sqrt(x)))){
+    while(x %% i == 0){
+      curr_max <- i
+      x <- x / i
+    }
+  }
+  if(x > 2){
+    curr_max <- max(curr_max,x)
+  }
+  return(curr_max)
 }

@@ -8,12 +8,14 @@ max_num <- 999*999
 min_num <-100*100
 find_max_palindrome <- function(min_num,max_num){
   for(i in max_num:min_num){
-    if(is_palindrome(i)){
+    y <- unlist(strsplit(toString(i),split=""))
+    if(sum(y==rev(y)) == nchar(i)){ # Check if palindrome
       if(has_threedigit_factor(i)){
         return(i)
       }
     }
   }
+  return(0)
 }
 
 has_threedigit_factor <- function(x){
@@ -25,15 +27,6 @@ has_threedigit_factor <- function(x){
         return(1)
       }
     }
-  }
-  return(0)
-}
-
-is_palindrome <- function(x){
-  # Determine if number is palindrome
-  y <- unlist(strsplit(toString(x),split=""))
-  if(sum(y==rev(y)) == nchar(x)){
-    return(1)
   }
   return(0)
 }

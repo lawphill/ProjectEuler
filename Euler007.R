@@ -1,5 +1,6 @@
 # Find the 10001st prime number
 
+
 find_prime <- function(x){
   primes <- rep(0,x)
   primes[1]<-2

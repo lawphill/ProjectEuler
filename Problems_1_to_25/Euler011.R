@@ -1,7 +1,7 @@
 # Calculate the largest product of four adjacent numbers in the given matrix
 # Adjacent can mean left-to-right, up-down, or diagonal in any direction
 
-x=read.csv("Euler011_matrix.txt",header=FALSE,sep=" ")
+x=read.csv("data/Euler011_matrix.txt",header=FALSE,sep=" ")
 M=as.matrix(x)
 
 max_product <- 0

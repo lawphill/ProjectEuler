@@ -1,0 +1,73 @@
+# A unit fraction is 1/d, some have repeating sequences 0.(3), 0.1(6), 0.(142857)
+# For d < 1000, find the value of d which has the longest repeating sequence
+
+# The length of the sequence is equally to the Multiplicative Order of 10 mod d
+# It seems like Multiplicative Order of A mod B is defined as such:
+# A^0 = 1, = 0*B + 1 -> 1
+# A^1 = A, = x*B + y -> y
+# A^k = x*B + y
+# keep this up, return first non-zero k where A^k = 1 mod B
+
+# Code runs well enough for searching 2:999
+# Runs very slowly for 2:9999
+
+gcd_func <- function(a,b){
+  divisible_a <- a %% 1:a
+  divisible_b <- b %% 1:b
+
+  common <- 1
+  for(i in 2:min(a,b)){
+    if((divisible_a[i] == 0) && (divisible_b[i] == 0)){
+      common <- i
+    }
+  }
+  return(common)
+}
+
+MultOrd <- function(a,b){
+  if(a %% 1 != 0 || b %% 1 != 0){
+    return("Error, please use integer values")
+  }
+  
+  if(gcd_func(a,b) != 1){
+    return("Error, gcd(a,b) must equal 1")
+  }
+  
+  k <- 1
+  while(TRUE){
+    # Since k is sometimes very large, modulo operator breaks down (even with gmp)
+    # Instead, we rely on the fact that a^2 %% b = ( (a %% b) ^ 2 ) %% b
+    actual_mod <- a %% b
+    for(i in 2:k){
+      actual_mod <- (actual_mod * a) %% b
+    }
+    if(actual_mod == 1){
+      return(k)
+    }else{
+      k <- k + 1
+    }
+  }
+}
+
+max_d <- 999
+longest_remainder <- 0
+index <- 0
+remainders <- rep(0,max_d)
+
+for(d in 2:max_d){
+  if(d %% 2 != 0 && d %% 5 != 0 && remainders[d] == 0){
+    r <- MultOrd(10,d)
+    
+    if( r > longest_remainder){
+      longest_remainder <- r
+      index <- d
+    }
+    for(i in 1:(max_d %/% d)){
+      # For all multiples, if r is greater than previous value, replace it
+      if(remainders[d*i] < r){
+        remainders[d*i] <- r
+      }
+    }
+  }
+}
+print(which.max(remainders))

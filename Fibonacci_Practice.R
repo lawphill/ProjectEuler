@@ -9,10 +9,12 @@ fib1 <- function(n){
 }
 
 fib2 <- function(n){
-  fibs <- c(0,1)
-  if(n>1){
+  fibs <- rep(0,n)
+  fibs[1] <- 1
+  fibs[2] <- 1
+  if(n>2){
     for(i in 3:n){
-      fibs[i] = fibs[i-1]+fibs[i-2]
+      fibs[i] <- fibs[i-1]+fibs[i-2]
     }
   }
   return(fibs[n])

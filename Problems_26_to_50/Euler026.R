@@ -25,38 +25,27 @@ gcd_func <- function(a,b){
 }
 
 MultOrd <- function(a,b){
-  if(a %% 1 != 0 || b %% 1 != 0){
-    return("Error, please use integer values")
-  }
-  
-  if(gcd_func(a,b) != 1){
-    return("Error, gcd(a,b) must equal 1")
-  }
-  
   k <- 1
-  while(TRUE){
+  actual_mod <- a %% b
+  while(actual_mod != 1){
     # Since k is sometimes very large, modulo operator breaks down (even with gmp)
     # Instead, we rely on the fact that a^2 %% b = ( (a %% b) ^ 2 ) %% b
-    actual_mod <- a %% b
-    for(i in 2:k){
-      actual_mod <- (actual_mod * a) %% b
-    }
-    if(actual_mod == 1){
-      return(k)
-    }else{
-      k <- k + 1
-    }
+    k <- k + 1
+    actual_mod <- (actual_mod * a) %% b
   }
+  return(k)
 }
 
-max_d <- 999
+max_d <- 9999
 longest_remainder <- 0
 index <- 0
 remainders <- rep(0,max_d)
 
 for(d in 2:max_d){
   if(d %% 2 != 0 && d %% 5 != 0 && remainders[d] == 0){
-    r <- MultOrd(10,d)
+    if(gcd_func(10,d)==1){
+      r <- MultOrd(10,d)
+    }
     
     if( r > longest_remainder){
       longest_remainder <- r

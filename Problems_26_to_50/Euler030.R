@@ -10,7 +10,7 @@
 raised_digits <- (0:9)^5
 
 start_num <- 10
-end_num <- 999999
+end_num <- raised_digits[10]*6
 # We can prove that any number with more than 6 digits can't be matched.
 # For a 7 digit number, the max we can get is (9^5)*7 = 413,343, that's not big
 # enough to make a 7 digit number, the minimum of which would need to sum to 

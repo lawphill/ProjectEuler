@@ -39,10 +39,14 @@ MultOrd <- function(a,b){
 max_d <- 9999
 longest_remainder <- 0
 index <- 0
-remainders <- rep(0,max_d)
+remainders <- rep(-1,max_d)
+remainders[1] <- 0
+# No repeating digits for multiples of 2 or 5 (the factors of 10)
+remainders[(1:max_d %% 2) == 0] <- 0 
+remainders[(1:max_d %% 5) == 0] <- 0
 
 for(d in 2:max_d){
-  if(d %% 2 != 0 && d %% 5 != 0 && remainders[d] == 0){
+  if(remainders[d] == -1){
     if(gcd_func(10,d)==1){
       r <- MultOrd(10,d)
     }

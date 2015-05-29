@@ -30,3 +30,5 @@ has_threedigit_factor <- function(x){
   }
   return(0)
 }
+
+print(find_max_palindrome(min_num,max_num))

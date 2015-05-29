@@ -1,5 +1,11 @@
 # Calculate largest prime factor of 600851475143 
-# Go through factors largest to smallest, check primeness
+
+# Factorize by going through 2:floor(sqrt(x)), and removing that factor
+# e.g. for 45, remove factor 2 (if possible), it's not so we move on to 3
+# 45, remove factor 3 -> 15, remove factor 3 -> 5
+# 5, remove factor 4, not possible
+# 5, remove factor 5 -> 1, 5 is largest factor so return it
+
 num <- 600851475143
 
 factorize <- function(x){
@@ -21,3 +27,5 @@ factorize <- function(x){
   }
   return(curr_max)
 }
+
+print(factorize(num))

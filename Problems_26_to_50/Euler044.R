@@ -8,7 +8,7 @@
 # Find the pair of pentagonal numbers, Pj and Pk, for which their sum and difference are
 #   pentagonal and D = |Pk − Pj| is minimised; what is the value of D?
 
-# CODE PRODUCES CORRECT ANSWER. RELATIVELY SLOW, ABOUT 8.5 SECONDS
+# CODE PRODUCES CORRECT ANSWER. RELATIVELY SLOW, ABOUT 6 SECONDS
 
 pentagonal <- function(n){
   p <- n*(3*n-1) / 2
@@ -20,13 +20,14 @@ pents <- pentagonal(1:maximum)
 lowest <- pents[maximum]
 
 for(i in 1:maximum){
-  poss <- pents[(pents-pents[i])<lowest]
-  subs <- poss[(poss-pents[i]) %in% poss]
+  poss <- pents[(pents-pents[i])<lowest & pents > pents[i]]
+  subs <- poss[((sqrt(24*(poss-pents[i])+1)+1)/6) %% 1 == 0]
   
   if(length(subs)>0){
-    adds <- subs[(subs+pents[i]) %in% poss]
-    
+    adds <- subs[((sqrt(24*(subs+pents[i])+1)+1)/6) %% 1 == 0]
     if(length(adds)>0){
+      print(subs)
+      print(adds)
       lowest <- min(c(lowest,abs(pents[i]-adds)))
     }
   }

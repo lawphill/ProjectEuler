@@ -1,25 +1,17 @@
 # Find the 10001st prime number
 
-
-find_prime <- function(x){
-  primes <- rep(0,x)
-  primes[1]<-2
-  curr_index <- 2
-  curr_num <- 3
-  while(curr_index <= x){
-    poss_primes <- primes[primes != 0]
-    if(is_prime(curr_num,poss_primes[poss_primes <= sqrt(curr_num)])){ # find new primes
-      primes[curr_index] <- curr_num
-      curr_index <- curr_index + 1
+max_num <- 999999
+nums <- 1:max_num
+nums[1] <- 0
+to_find <- 10001
+found<-0
+for(i in 2:floor(max_num/2)){
+  if(nums[i] != 0){
+    nums[seq.int(i*2,max_num,i)] <- 0
+    found <- found + 1
+    if(found == to_find){
+      print(i)
+      break
     }
-    curr_num <- curr_num + 2
   }
-  return(primes[x])
-}
-
-is_prime <- function(x,primes){
-  remainders <- x%%primes
-  if(sum(remainders==0)==0){
-    return(TRUE)
-  }else{ return(FALSE)}
 }

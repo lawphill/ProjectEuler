@@ -26,3 +26,4 @@ for(i in 1:nrow(M)){
     }
   }
 }
+print(max_product)

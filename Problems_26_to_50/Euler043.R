@@ -72,3 +72,4 @@ for(eight_index in 1:length(eight_to_ten)){
     }
   }
 }
+print(total)

@@ -5,8 +5,6 @@ library("gmp") # For dealing with large numbers
 # Had to create a factorial function in order to ensure it returned as a large
 # integer correctly
 
-#num <- as.bigz(factorial(100))
-
 fact <- function(n){
   n <- as.bigz(n)
   if(n <= 1){
@@ -21,5 +19,5 @@ result <- 0
 while(num > 0){
   result <- result + (num %% 10)
   num <- num %/% 10
-  print(result)
 }
+print(result)

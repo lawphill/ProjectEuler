@@ -20,3 +20,4 @@ for(i in min_num:max_num){
     nums <- c(nums,i)
   }
 }
+print(total)

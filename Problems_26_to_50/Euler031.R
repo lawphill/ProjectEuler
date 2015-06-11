@@ -16,7 +16,7 @@ total <- 200
 # col <- max coin available, necessary b/c we can need to make 200 coins and have 50p pieces
 #   available, or we can need to make 200 coins, but only have 1p available. Different
 #   answers in each case.
-combs <- matrix(data=0,nrow=curr_val,ncol=length(coins))
+combs <- matrix(data=0,nrow=total,ncol=length(coins))
 combs[,1] <- 1 # Only 1 way to solve for 1p
 
 coins_possible <- function(x,coin_ind){

@@ -17,4 +17,4 @@ for(a in min_a:max_a){
   values[a-1,] <- pow.bigz(a,(min_b:max_b))
 }
 
-nunique <- length(unique(c(values))) # To grab unique values, first convert to list
+print(length(unique(c(values)))) # To grab unique values, first convert to list

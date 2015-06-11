@@ -75,3 +75,4 @@ while(found < to_find & index < length(primes)){
   }
   index <- index + 1
 }
+print(sum(trunc_primes))

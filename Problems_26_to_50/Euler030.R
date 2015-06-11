@@ -32,5 +32,5 @@ for(n in start_num:end_num){
   }
 }
 
-
+print(total)
 

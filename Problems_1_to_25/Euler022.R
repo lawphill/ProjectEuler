@@ -36,3 +36,4 @@ for(i in 1:length(names)){
   total_cost[i] <- (name_cost[i] * i)
   total <- total + total_cost[i]
 }
+print(total)

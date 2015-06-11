@@ -4,31 +4,17 @@
 #
 # Find the largest palindrome made from the product of two 3-digit numbers.
 
-max_num <- 999*999
-min_num <-100*100
-find_max_palindrome <- function(min_num,max_num){
-  for(i in max_num:min_num){
-    y <- unlist(strsplit(toString(i),split=""))
-    if(sum(y==rev(y)) == nchar(i)){ # Check if palindrome
-      if(has_threedigit_factor(i)){
-        return(i)
-      }
-    }
+min_factor<-100
+max_factor<-999
+# Get list of all numbers with two 3-digit factors
+m <- sort(unique(c((max_factor:min_factor) %*% t(max_factor:min_factor))),decreasing=TRUE)
+
+# Going from largest to smallest, return first that's a palindrome
+for(num in m){
+  digits <- as.integer(unlist(strsplit(toString(num),split="")))
+  if(all(digits == rev(digits))){
+    print(num)
+    break
   }
-  return(0)
 }
 
-has_threedigit_factor <- function(x){
-  if(x<=10000){ return(0) }
-  
-  for(i in floor(sqrt(x)):100){
-    if(x %% i == 0){
-      if(nchar(x/i)==3){
-        return(1)
-      }
-    }
-  }
-  return(0)
-}
-
-print(find_max_palindrome(min_num,max_num))

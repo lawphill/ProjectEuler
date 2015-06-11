@@ -53,3 +53,4 @@ while(year <= end_year){
   initial_weekday <- (initial_weekday + (num_days %% 7)) %% 7
   year <- year + 1
 }
+print(target_found)

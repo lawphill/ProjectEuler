@@ -2,12 +2,6 @@
 # i.e. 2^15 = 32768, sum of digits = 3+2+7+6+8 = 26
 library("gmp") # For dealing with large numbers
 
-num <- as.bigz(2^1000)
-result <- 0
-while(num > 0){
-  result <- result + (num %% 10)
-  num <- num %/% 10
-}
 
 # Originally, I was trying to avoid using a library for big integers
 # So, the below functions work as a way of using modular arithmetic to grab
@@ -46,3 +40,11 @@ modExpon <- function(base,exponent,mod){
 firstKdigits <- function(base,exponent,k){
   return(modExpon(base,exponent,10^k))
 }
+
+num <- as.bigz(2^1000)
+result <- 0
+while(num > 0){
+  result <- result + (num %% 10)
+  num <- num %/% 10
+}
+print(result)

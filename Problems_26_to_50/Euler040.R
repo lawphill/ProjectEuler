@@ -42,3 +42,4 @@ while(curr_index <= max_index){
     curr_index <- curr_index + ndigit
   }
 }
+print(total)

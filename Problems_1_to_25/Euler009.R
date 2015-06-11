@@ -10,8 +10,6 @@ for(a in 1:floor(1000/3-1)){
       if(a^2 + b^2 == c^2){
         print(a*b*c)
       }
-    }else{
-      #print(c(a,b,c))
     }
   }
 }

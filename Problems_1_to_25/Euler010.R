@@ -15,3 +15,4 @@ for(i in 2L:max_num){
     all_nums[seq.int(i,length(all_nums),i)] <- 0
   }
 }
+print(sum_of_primes)

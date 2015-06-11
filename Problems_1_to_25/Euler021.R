@@ -20,3 +20,4 @@ for(i in nums){
     total <- total + i
   }
 }
+print(total)

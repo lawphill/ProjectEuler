@@ -26,8 +26,6 @@ for(i in 1:maximum){
   if(length(subs)>0){
     adds <- subs[((sqrt(24*(subs+pents[i])+1)+1)/6) %% 1 == 0]
     if(length(adds)>0){
-      print(subs)
-      print(adds)
       lowest <- min(c(lowest,abs(pents[i]-adds)))
     }
   }

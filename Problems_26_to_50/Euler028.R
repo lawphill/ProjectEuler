@@ -10,6 +10,24 @@
 # The diagonals of that matrix sum to 101, calculate the sum of the diagonals
 # for a 1001x1001 matrix
 
+next_coord <- function(x,y,dir){
+  # dir = 1, going right
+  # dir = 2, going down
+  # dir = 3, going left
+  # dir = 4, going up
+  
+  if(dir == 1){
+    y <- y + 1
+  }else if(dir == 2){
+    x <- x + 1
+  }else if(dir == 3){
+    y <- y - 1
+  }else if(dir == 4){
+    x <- x - 1
+  }
+  return(c(x,y))
+}
+
 # Brute force solution, generate matrix, add sums when they're on the diagonal
 
 size <- 1001
@@ -26,7 +44,7 @@ if((size %% 2) == 0){
 spiral[x,y] <- num
 dir <- 4
 sum_diag <- num
-while(num <= size^2){
+while(num < size^2){
   num <- num + 1
 
   # Look ahead to see if we should turn
@@ -47,21 +65,4 @@ while(num <= size^2){
     sum_diag <- sum_diag + num
   }
 }
-
-next_coord <- function(x,y,dir){
-  # dir = 1, going right
-  # dir = 2, going down
-  # dir = 3, going left
-  # dir = 4, going up
-  
-  if(dir == 1){
-    y <- y + 1
-  }else if(dir == 2){
-    x <- x + 1
-  }else if(dir == 3){
-    y <- y - 1
-  }else if(dir == 4){
-    x <- x - 1
-  }
-  return(c(x,y))
-}
+print(sum_diag)

@@ -24,21 +24,9 @@ is_abundant <- function(n){
 maximum <- 28123
 
 # Locate all abundant numbers
-abundant <- rep(0,maximum)
-for(i in 1:maximum){
-  if(is_abundant(i) == TRUE){
-    abundant[i] <- i
-  }
-}
-abundant <- abundant[abundant!=0]
+abundant <- 1:maximum
+abundant <- abundant[sapply(abundant,is_abundant)]
 
-# Find nums that aren't sums of two abundant numbers
-not_sum <- rep(0,maximum)
-for(i in 1:maximum){
-  if(sum(match(i-abundant,abundant),na.rm=TRUE)==0){
-    not_sum[i] <- i
-  }
-}
-not_sum <- not_sum[not_sum!=0]
-
-print(sum(not_sum))
+abundant_sums <- unique(c(sapply(abundant,function(x) x+abundant)))
+x<-1:maximum
+print(sum(x[-(abundant_sums[abundant_sums<=maximum])]))

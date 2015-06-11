@@ -23,3 +23,4 @@ for(p in 2:1000){
     max_p <- p
   }
 }
+print(max_solutions)

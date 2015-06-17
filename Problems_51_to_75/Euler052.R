@@ -6,22 +6,33 @@
 # Needs to start with 1, otherwise 6x would have too many digits
 
 
-i <- 10L
+i <- 100L
 found <- 0
+ndigits <- ceiling(log10(i+1))
 while(found==0){
-  if(i %/% 10^(nchar(i)-1) != 1){
-    i <- i*5L # Go from 20->100, 200->1000, 2000->10000, etc.
+  if(ndigits != ceiling(log10(i*6+1))){
+    i <- i*6L-2L # Go from 17->100,167->1000,1667->10000
+    ndigits <- ceiling(log10(i+1))
     next
   }
-  
-  x <- i*1:6 # numbers to check
-  digits<-lapply(x, function(i) sort((i %/% 10^((nchar(i)-1):0)) %% 10))
-  
-  if(all(lapply(digits, function(x) all(x == digits[[1]])))){
-    print(i)
-    found <- 1
-    break
+  if(ndigits < 5){
+    if(!any((i %% 10) != c(0,5))){
+      i <- i + 1
+      next
+    }
+  }else if(ndigits < 6){
+    if(!any((i %% 10) != c(0,2,4,5,6,8))){
+      i <- i + 1
+      next
+    }
   }
   
+  first_digits <- sort((i %/% 10^((nchar(i)-1):0)) %% 10)
+  if(all(vapply(i*2:6,function(z) all(sort((z %/% 10^((ndigits-1):0)) %% 10)==first_digits),FUN.VALUE=FALSE))){
+    print(i)
+    found <-1
+    break
+  }
+
   i <- i + 1L
 }

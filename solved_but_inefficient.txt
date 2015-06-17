@@ -10,4 +10,5 @@ Problem 47: ~7 seconds
 Problem 49: ~4 seconds
 Problem 50: ~4 seconds
 Problem 51: ~12 seconds
-Problem 52: ~19 seconds
+Problem 52: ~14 seconds
+Problem 54: ~5 seconds

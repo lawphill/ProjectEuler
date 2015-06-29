@@ -13,3 +13,4 @@ Problem 51: ~12 seconds
 Problem 52: ~14 seconds
 Problem 54: ~5 seconds
 Problem 56: ~6 seconds
+Problem 58: ~22 seconds

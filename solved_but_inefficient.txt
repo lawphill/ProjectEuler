@@ -15,3 +15,8 @@ Problem 54: ~5 seconds
 Problem 56: ~6 seconds
 Problem 58: ~22 seconds
 Problem 60: >1 minute
+Problem 70: ~8 seconds
+Problem 71: ~7 seconds
+Problem 72: ~46 seconds
+Problem 73: ~34 seconds
+Problem 74: ~15 seconds

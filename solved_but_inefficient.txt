@@ -20,3 +20,4 @@ Problem 71: ~7 seconds
 Problem 72: ~46 seconds
 Problem 73: ~34 seconds
 Problem 74: ~15 seconds
+Problem 80: ~1 minute

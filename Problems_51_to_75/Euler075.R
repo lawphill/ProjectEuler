@@ -36,7 +36,7 @@ triplet <- function(m,n){
 }
 
 
-add_to_counts <- function(start_m,start_n,max_L){
+add_to_counts <- function(start_m,max_L){
   for(m in start_m:865){ # 865 just happens to be the max to fit under the 1,500,000 limit
     if((m%%2) == 0){
       start_n <- 1
@@ -58,5 +58,5 @@ add_to_counts <- function(start_m,start_n,max_L){
 max_L <- 1500000L
 counts <- rep(0,max_L)
 
-add_to_counts(2,1,max_L)
+add_to_counts(2,max_L)
 print(sum(counts==1))

@@ -22,4 +22,8 @@ Problem 73: ~34 seconds
 Problem 74: ~15 seconds
 Problem 80: ~1 minute
 Problem 86: ~9 seconds
-Problem 82: ~1 minute
+Problem 92: ~1 minute
+Problem 93: ~20 seconds
+Problem 94: ~15 seconds
+Problem 95: ~30 seconds
+Problem 96: ~21 seconds
